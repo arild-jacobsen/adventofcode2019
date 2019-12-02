@@ -3,6 +3,10 @@ package com.adventofcode
 import java.io.File
 
 object Day1 {
+    private fun readInputs() = File("src/main/resources/day1_input.txt")
+        .readLines()
+        .map { it.toInt() }
+
     private fun fuelCost(mass: Int) = mass / 3 - 2
 
     private fun recursiveFuelCost(mass: Int): Int {
@@ -44,17 +48,19 @@ object Day1 {
     fun calculateTotalFuelCostIncludingFuelMassTailRecursive(moduleMasses: Iterable<Int>) =
         moduleMasses.fold(0L) { acc, mass -> acc + tailRecursiveFuelCost(0L, mass) }
 
-    fun solve() {
-        val inputs = File("src/main/resources/day1_input.txt")
-            .readLines()
-            .map { it.toInt() }
+    fun solveProblem1(): Long {
+        val inputs = readInputs()
+        return calculateFuelCostForMass(inputs)
+    }
 
-        arrayOf(
-            Day1::calculateFuelCostForMass,
-            Day1::calculateTotalFuelCostIncludingFuelMassTailRecursive
-        ).forEachIndexed { index, solution ->
-            println("Solution for day 1 problem ${index + 1}: ${solution(inputs)}")
-        }
+    fun solveProblem2(): Long {
+        val inputs = readInputs()
+        return calculateTotalFuelCostIncludingFuelMassTailRecursive(inputs)
+    }
+
+    fun solve() {
+        println("Solution for day 1 problem 1: ${solveProblem1()}")
+        println("Solution for day 1 problem 2: ${solveProblem2()}")
     }
 }
 

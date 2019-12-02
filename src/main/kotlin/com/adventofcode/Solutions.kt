@@ -7,5 +7,6 @@ fun main() {
     println("Merry ${today.dayOfMonth()} of ${today.month()}!\n".toUpperCase())
 
     Day1.solve()
+    Day2.solve()
 }
 

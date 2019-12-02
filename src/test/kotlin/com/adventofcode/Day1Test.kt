@@ -65,6 +65,19 @@ class Day1Test {
             fuel shouldBe expectedFuel
         }
     }
+
+    @Test
+    fun `problem1 solution`() {
+        Day1.solveProblem1() shouldBe 3488702
+    }
+
+    @Test
+    fun `problem2 solution`() {
+        Day1.solveProblem2() shouldBe 5230169
+    }
 }
 
-fun <T> forAll(vararg inputs: T, fn: (T) -> Unit) = forAll(inputs, fn)
+private fun forAll(
+    vararg inputs: Pair<Int, Int>,
+    fn: (Pair<Int, Int>) -> Unit
+) = forAll(inputs, fn)
